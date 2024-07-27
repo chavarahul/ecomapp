@@ -3,7 +3,12 @@ import { StyleSheet, Text, View } from 'react-native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import BottomTabNavigation from './navigation/BottomTabNavigation';
+import Cart from './screens/Cart';
 export default function App() {
+  const Stack = createNativeStackNavigator();
   const [fontsLoaded] = useFonts({
     regular:require('./assets/fonts/Poppins-Regular.ttf'),
     light:require('./assets/fonts/Poppins-Light.ttf'),
@@ -23,12 +28,13 @@ export default function App() {
     return null
   }
   return (
-    <View style={styles.container}>
-      <Text>Open up App to start working on your app!</Text>
-      {/* wefijwiowjiowjiowj */}
-      <Text style={styles.textStyle}>jeoirjgeogjeroj</Text>
-      {/* <StatusBar style="auto" /> */}
-    </View>
+   <NavigationContainer>
+    <Stack.Navigator>
+      <Stack.Screen name='Bottom Navigation' options={{headerShown:false}} component={BottomTabNavigation}/>
+      <Stack.Screen name='Cart' options={{headerShown:false}} component={Cart}/>
+
+    </Stack.Navigator>
+   </NavigationContainer>
   );
 }
 

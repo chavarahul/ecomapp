@@ -17,7 +17,7 @@ const BottomTabNavigation = () => {
         bottom:0,
         right:0,
         elavation:0,
-        height:70
+        height:50
       }
     }
   return (
@@ -25,8 +25,8 @@ const BottomTabNavigation = () => {
     <Tab.Screen name='Home' component={Home} options={{tabBarIcon:(focused)=>{
       return <Ionicons size={25} name={focused ? "home" :"home-outline"} color={focused? COLORS.primary : COLORS.gray}/>
       }}}/>
-    <Tab.Screen name='search' component={Search} options={{tabBarIcon:(focused)=>{
-      return <Ionicons size={25} name="search-sharp" color={focused?COLORS.primary:COLORS.gray}/>
+    <Tab.Screen name='search' component={Search} options={{tabBarIcon:(focus)=>{
+      return <Ionicons size={25} name="search-sharp" color={focus?COLORS.primary:COLORS.gray}/>
     }}}/>
     <Tab.Screen name='profile' component={Profile} options={{tabBarIcon:(focused)=>{
       return <Ionicons size={25} name={focused ? "person" : "person-outline"} color={focused?COLORS.primary:COLORS.gray}/>
