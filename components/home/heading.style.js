@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   },
   headerTitle:{
     fontFamily:'semibold',
-    fontSize:SIZES.xLarge -5
+    fontSize:SIZES.xLarge -5,
   }
 })
 
