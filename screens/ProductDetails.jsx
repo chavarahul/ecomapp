@@ -1,11 +1,14 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native'
 import React,{useState,useCallback} from 'react'
+import {useRoute} from '@react-navigation/native'
 import { Ionicons,SimpleLineIcons,MaterialCommunityIcons,Fontisto } from '@expo/vector-icons'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import styles from './productdetails.styles'
 import { COLORS, SIZES } from '../constants'
 
 const ProductDetails = ({ navigation }) => {
+  const route = useRoute();
+  const {item} = route.params
   const [count,setCount] = useState(1)
   const decrement = () =>{
     if(count>=1){setCount(count-1)}
@@ -21,12 +24,12 @@ const ProductDetails = ({ navigation }) => {
             <Ionicons name='heart' size={30} color={COLORS.primary} />
           </TouchableOpacity>
         </View>
-        <Image source={{ uri: 'https://img.freepik.com/free-photo/picture-frame-by-velvet-armchair_53876-132788.jpg' }} style={styles.image} />
+        <Image source={{ uri: item.imageUrl }} style={styles.image} />
         <View style={styles.details}>
           <View style={styles.titleRow}>
-            <Text style={styles.title}>Product</Text>
+            <Text style={styles.title}>{item.title}</Text>
             <View style={styles.priceWrapper}>
-              <Text style={styles.price}>$ 660.88</Text>
+              <Text style={styles.price}>$ {item.price}</Text>
             </View>
           </View>
           <View style={styles.ratingRow}>
@@ -48,13 +51,13 @@ const ProductDetails = ({ navigation }) => {
           </View>
           <View style={styles.descriptionWrapper}>
               <Text style={styles.description}>Description</Text>
-              <Text style={styles.descText}>Hello Worls</Text>
+              <Text style={styles.descText}>{item.description}</Text>
           </View>
           <View style={{marginBottom:SIZES.small}}>
             <View style={styles.location}>
               <View style={{flexDirection:'row'}}>
               <Ionicons name='location-outline' size={20}/>
-              <Text>  Lucknow  </Text>
+              <Text>  {item.location}  </Text>
               </View>
               <View style={{flexDirection:'row'}}>
               <MaterialCommunityIcons name='truck-delivery-outline' size={20}/>

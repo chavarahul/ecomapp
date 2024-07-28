@@ -1,24 +1,32 @@
-import { View, Text, FlatList } from 'react-native'
-import React from 'react'
-import styles from './productsrow.styles'
-import { SIZES } from '../../constants'
-import ProductCardView from './ProductCardView'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { View, Text, FlatList, ActivityIndicator } from 'react-native';
+import React from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import useFetch from '../../hooks/useFetch';
+import ProductCardView from './ProductCardView';
+import { SIZES, COLORS } from '../../constants';  // Ensure COLORS is imported if used
 
-const products = [1, 2, 4, 5, 6]
 const ProductsRow = () => {
-    return (
-       <SafeAreaView style={{flex:1}}>
-         <View style={{marginLeft:12}}>
-            <FlatList
-                data={products}
-                renderItem={({ item }) => <ProductCardView/>}
-                horizontal
-                contentContainerStyle={{ columnGap: SIZES.medium }}
-            />
-        </View>
-       </SafeAreaView>
-    )
-}
+    const { data, loading, error, refetch } = useFetch();
 
-export default ProductsRow
+    return (
+        <SafeAreaView style={{ flex: 1 }}>
+            <View style={{ marginLeft: 12 }}>
+                {loading ? (
+                    <ActivityIndicator size={SIZES.large} color={COLORS.primary} />
+                ) : error ? (
+                    <Text>Something Went Wrong</Text>
+                ) : (
+                    <FlatList
+                        data={data}
+                        keyExtractor={(item) => item._id}
+                        renderItem={({ item }) => <ProductCardView item={item} />}
+                        horizontal
+                        contentContainerStyle={{ columnGap: SIZES.medium }}
+                    />
+                )}
+            </View>
+        </SafeAreaView>
+    );
+};
+
+export default ProductsRow;
