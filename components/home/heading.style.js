@@ -5,7 +5,8 @@ const styles = StyleSheet.create({
   container:{
     marginTop:SIZES.medium,
     // marginBottom:-SIZES.xSmall,
-    marginHorizontal:20
+    marginHorizontal:20,
+    marginBottom:-SIZES.large - 2
   },
   header:{
     flexDirection:'row',

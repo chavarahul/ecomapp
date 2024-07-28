@@ -10,7 +10,7 @@ import ProductsRow from '../components/products/ProductsRow'
 
 const Home = () => {
   return (
-    <SafeAreaView style={{flex:1}}>
+    <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.appBarWraper}>
         <View style={styles.appBar}>
           <Ionicons name='location-outline' size={25} />
@@ -25,12 +25,13 @@ const Home = () => {
           </View>
         </View>
       </View>
-      <ScrollView contentContainerStyle={{ paddingBottom: 70}}>
+      <ScrollView contentContainerStyle={{ paddingBottom: 70 }}>
         <Welcome />
         <Carousel />
         <Headings />
-        <ProductsRow/>
+        <ProductsRow />
       </ScrollView>
+
     </SafeAreaView>
   )
 }

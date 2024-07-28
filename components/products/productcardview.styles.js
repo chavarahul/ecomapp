@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     },
     price:{
         fontFamily:'regular',
-        fontSize:SIZES.large,
+        fontSize:SIZES.medium,
     },
     addbtn:{
         position:'absolute',
