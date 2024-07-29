@@ -3,14 +3,16 @@ import React from 'react'
 import styles from './heading.style'
 import {Ionicons} from '@expo/vector-icons'
 import {COLORS}from '../../constants/index'
+import {useNavigation} from '@react-navigation/native'
 
 const Headings = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerTitle}>New Rivals</Text>
-        <TouchableOpacity>
-             <Ionicons name='ios-grid' size={20} color={COLORS.primary}/>
+        <TouchableOpacity onPress={()=>{navigation.navigate("NewRivals")}}>
+             <Ionicons name='ios-grid' size={22} color={COLORS.primary}/>
         </TouchableOpacity>
       </View>
     </View>

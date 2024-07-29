@@ -12,7 +12,7 @@ const ProductsRow = () => {
         <SafeAreaView style={{ flex: 1 }}>
             <View style={{ marginLeft: 12 }}>
                 {loading ? (
-                    <ActivityIndicator size={SIZES.large} color={COLORS.primary} />
+                    <ActivityIndicator size={SIZES.xLarge} color={COLORS.primary} />
                 ) : error ? (
                     <Text>Something Went Wrong</Text>
                 ) : (

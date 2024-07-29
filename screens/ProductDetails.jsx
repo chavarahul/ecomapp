@@ -40,12 +40,12 @@ const ProductDetails = ({ navigation }) => {
               <Text style={styles.ratingText}>(4.9)</Text>
             </View>
             <View style={styles.rating}>
-              <TouchableOpacity onPress={()=>{setCount(count+1)}}>
-                    <SimpleLineIcons name='plus' size={20} />
-              </TouchableOpacity>
-              <Text style={styles.ratingText}>{count}</Text>
               <TouchableOpacity onPress={()=>{decrement()}}>
                     <SimpleLineIcons name='minus' size={20} />
+              </TouchableOpacity>
+              <Text style={styles.ratingText}>{count}</Text>
+              <TouchableOpacity onPress={()=>{setCount(count+1)}}>
+                    <SimpleLineIcons name='plus' size={20} />
               </TouchableOpacity>
             </View>
           </View>
