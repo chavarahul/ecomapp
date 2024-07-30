@@ -21,7 +21,7 @@ const ProductsRow = () => {
                         keyExtractor={(item) => item._id}
                         renderItem={({ item }) => <ProductCardView item={item} />}
                         horizontal
-                        contentContainerStyle={{ columnGap: SIZES.medium }}
+                        contentContainerStyle={{ columnGap: SIZES.medium,marginTop:40 }}
                     />
                 )}
             </View>

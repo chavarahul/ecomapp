@@ -35,8 +35,6 @@ const styles = StyleSheet.create({
     fontFamily:'regular',
     width:'100%',
     height:'100%',
-    border:1,
-    borderColor:'red',
     paddingHorizontal:SIZES.small,
   },
   searchBtn:{
