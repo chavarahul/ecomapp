@@ -5,7 +5,7 @@ import { useCallback } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import BottomTabNavigation from './navigation/BottomTabNavigation';
-import { ProductDetails, NewRivals,Cart, Login } from './screens/index'
+import { ProductDetails, NewRivals,Cart, Login, Orders, Favourites, SignUp } from './screens/index'
 export default function App() {
   const Stack = createNativeStackNavigator();
   const [fontsLoaded] = useFonts({
@@ -34,6 +34,9 @@ export default function App() {
         <Stack.Screen name='ProductDetails' options={{ headerShown: false }} component={ProductDetails} />
         <Stack.Screen name='NewRivals' options={{ headerShown: false }} component={NewRivals} />
         <Stack.Screen name='Login' options={{ headerShown: false }} component={Login} />
+        <Stack.Screen name='Orders' options={{ headerShown: false }} component={Orders} />
+        <Stack.Screen name='Favourites' options={{ headerShown: false }} component={Favourites} />
+        <Stack.Screen name='SignUp' options={{ headerShown: false }} component={SignUp} />
       </Stack.Navigator>
     </NavigationContainer>
   );

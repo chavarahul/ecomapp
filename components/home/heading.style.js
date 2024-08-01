@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     marginTop:SIZES.medium,
     // marginBottom:-SIZES.xSmall,
     marginHorizontal:20,
-    marginBottom:-SIZES.large - 2
+    marginBottom:-SIZES.large - 35
   },
   header:{
     flexDirection:'row',
