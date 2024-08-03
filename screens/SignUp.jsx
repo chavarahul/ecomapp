@@ -7,6 +7,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 import { COLORS } from '../constants';
+import axios from 'axios';
 
 const SignUp = ({ navigation }) => {
     const [loader, setLoader] = useState(false);
@@ -29,6 +30,19 @@ const SignUp = ({ navigation }) => {
             ]
         )
     }
+
+    const registerUser = async(values) => {
+        setLoader(true);
+        try {
+            const response = await axios.post('http://192.168.29.88:3000/api/register',values);
+            if(response?.status === 201){
+                console.log('user created')
+                 navigation.replace('Login')
+            }
+        } catch (error) {
+            console.log(error); 
+        }
+    }
     return (
         <ScrollView>
             <SafeAreaView style={{ marginHorizontal: 20 }}>
@@ -36,7 +50,9 @@ const SignUp = ({ navigation }) => {
                     <BackBtn onPress={() => { navigation.goBack() }} />
                     <Image source={require('../assets/images/bk.png')} style={styles.cover} />
                     <Text style={styles.title}>Unlimited Luxurious Furniture</Text>
-                    <Formik initialValues={{ email: '', password: '', location: '',username:'' }} validationSchema={validationSchema}>
+                    <Formik initialValues={{ email: '', password: '', location: '',username:'' }} validationSchema={validationSchema}
+                    onSubmit={(values)=> registerUser(values)}
+                    >
                         {({ handleChange, handleBlur, handleSubmit, touched, values, errors, isValid, setFieldTouched }) => (
                             <View>
                                 <View style={styles.wrapper}>
@@ -119,7 +135,7 @@ const SignUp = ({ navigation }) => {
                                         <Text style={styles.errorMessage}>{errors.password}</Text>
                                     )}
                                 </View>
-                                <Button title={"S I G N U P"} onPress={() => { isValid ? handleSubmit : inValidForm }} isValid={isValid} />
+                                <Button title={"S I G N U P"} onPress={() => { isValid ? handleSubmit : inValidForm }} isValid={isValid} loader={loader} />
                                 <Text style={styles.registration} onPress={() => { navigation.navigate('Login') }}>Login</Text>
                             </View>
                         )}
